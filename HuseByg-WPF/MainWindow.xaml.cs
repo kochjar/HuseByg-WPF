@@ -8,10 +8,13 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using System.Xaml.Permissions;
 
 namespace HuseByg_WPF
 {
@@ -23,6 +26,10 @@ namespace HuseByg_WPF
         public MainWindow()
         {
             InitializeComponent();
+            ExpanderController.AddExpander(spList);
+            ExpanderController.AddExpander(spList);
         }
+
+
     }
 }
