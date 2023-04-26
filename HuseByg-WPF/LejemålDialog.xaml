@@ -1,0 +1,77 @@
+﻿<Window x:Class="HuseByg_WPF.LejemålDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HuseByg_WPF"
+        mc:Ignorable="d"
+        Title="Tilføj lejere" Height="650" Width="560">
+    <Grid>
+        
+        <StackPanel Orientation="Vertical" Width="410">
+            <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Left">
+                <TextBlock FontSize="24">Tilføj Lejemål</TextBlock>
+                <Border Margin="0,8,0,5" Width="200" BorderBrush="LightGray" BorderThickness="0.5"></Border>
+                 <Label FontSize="12" FontWeight="Bold" Margin="-5,0,5,5">Antal lejere</Label>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Content="1 lejer" GroupName="AntalLejere"/>
+                    <RadioButton Content="2 lejere" GroupName="AntalLejere" Margin="10,0,0,0"/>
+                </StackPanel>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <StackPanel Orientation="Vertical" Width="200">
+                    <TextBlock FontSize="12" FontWeight="Bold">Primær lejer</TextBlock>
+                    <Label Margin="-5,0,0,0">Navn</Label>
+                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <Label Margin="-5,0,0,0">E-mailadresse</Label>
+                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <Label Margin="-5,0,0,0">Tlf. nr.</Label>
+                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="200" Margin="10,0,0,0">
+                    <TextBlock FontSize="12" FontWeight="Bold">Sekundær lejer</TextBlock>
+                    <Label Margin="-5,0,0,0">Navn</Label>
+                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <Label Margin="-5,0,0,0">E-mailadresse</Label>
+                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <Label Margin="-5,0,0,0">Tlf. nr.</Label>
+                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+
+            </StackPanel>
+            
+
+            <StackPanel Orientation="Vertical" Width="410" HorizontalAlignment="Left" Margin="0,10,0,0">
+                    <TextBlock FontSize="12" FontWeight="Bold">Lejemålsoplysninger</TextBlock>
+                <Label Margin="-5,0,0,0">Indbetalt depositum</Label>
+                <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <Label Margin="-5,0,0,0">Indflytningsdato i (DD-MM-YYYY)</Label>
+                <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <Label Margin="-5,0,0,0">Fraflytningsdato i (DD-MM-YYYY)</Label>
+                <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+
+                <StackPanel Orientation="Horizontal" Width="410" >
+                    <StackPanel Orientation="Vertical" Width="200">
+                        <Label Margin="-5,0,0,0">Antal hunde</Label>
+                        <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="10,0,0,0" Width="200">
+                        <Label Margin="-6,0,0,0">Antal katte</Label>
+                        <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+                </StackPanel>
+
+            <DockPanel Margin="0,15,0,0" Width="200" HorizontalAlignment="Left">
+                <Button  Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd">Fortryd</Button>
+                <Button Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
+            </DockPanel>
+
+
+        </StackPanel>
+        
+    </Grid>
+</Window>

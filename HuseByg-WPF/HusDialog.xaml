@@ -1,0 +1,41 @@
+﻿<Window x:Class="HuseByg_WPF.HusDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HuseByg_WPF"
+        mc:Ignorable="d"
+        
+        Title="Tilføj Hus" Height="400" Width="300">
+    <Grid>
+        
+        <StackPanel Orientation="Vertical" Width="200">
+            <TextBlock FontSize="24">Tilføj Hus</TextBlock>
+
+            <Border Margin="0,8,0,5" Width="200" BorderBrush="LightGray" BorderThickness="0.5"></Border>
+            
+            <Label Margin="-5,0,0,0" FontSize="12" FontWeight="Bold">Detaljer</Label>
+            <Label Margin="-5,0,0,0">Adresse</Label>
+            <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <Label Margin="-5,0,0,0">Antal værelser</Label>
+            <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <Label Margin="-5,0,0,0">Størrelse i m²</Label>
+            <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+
+            <Label Margin="-5,10,5,5" FontSize="12" FontWeight="Bold">Type</Label>
+            <StackPanel Orientation="Vertical">
+                <RadioButton Content="Lille" GroupName="Type"/>
+                <RadioButton Content="Stor" GroupName="Type"/>
+                <RadioButton Content="Ende" GroupName="Type"/>
+            </StackPanel>
+
+            <DockPanel Margin="0,15,0,0">
+                <Button  Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd">Fortryd</Button>
+                <Button Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
+            </DockPanel>
+            
+
+        </StackPanel>
+        
+    </Grid>
+</Window>

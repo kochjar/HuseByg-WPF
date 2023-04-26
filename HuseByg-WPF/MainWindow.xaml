@@ -13,7 +13,7 @@
             <StackPanel x:Name="spList" Orientation="Vertical">
                 
                 <DockPanel Width="612" HorizontalAlignment="Center" Height="40">
-                    <Button Width="100" Height="30" HorizontalAlignment="Right">Tilføj hus 🏠</Button>
+                    <Button Width="100" Height="30" HorizontalAlignment="Right" Click="Button_Click">Tilføj hus 🏠</Button>
                 </DockPanel>
                 
                 

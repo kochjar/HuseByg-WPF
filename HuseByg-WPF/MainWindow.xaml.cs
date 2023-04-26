@@ -54,6 +54,15 @@ namespace HuseByg_WPF
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            HusDialog dialog = new HusDialog();
+            dialog.ShowDialog();*/
 
+            LejemålDialog dialog = new LejemålDialog();
+
+            dialog.ShowDialog();
+        }
     }
 }
