@@ -23,12 +23,11 @@
                             </Grid.ColumnDefinitions>
 
                             <DockPanel Grid.Column="0">
-                                <Button Content="✏️" Margin="0,0,10,0" Width="25" Height="25"  Foreground="#000" DockPanel.Dock="Right" />
+                                <Button Content="✏️" Margin="0,0,10,0" Width="25" Height="25" Foreground="#000" DockPanel.Dock="Right" />
                                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
                                     <TextBlock Text="H1"  VerticalAlignment="Center" FontWeight="Bold" />
                                     <TextBlock Text="Søndergade 20, 8000 Aarhus" Margin="5,0,0,0" VerticalAlignment="Center" />
                                 </StackPanel>
-
                             </DockPanel>
 
                             <DockPanel Grid.Column="1">
@@ -54,6 +53,7 @@
 
                         <!-- HUS COLUMN -->
                         <StackPanel Orientation="Vertical"  Grid.Column="0" Margin="10,10,0,0">
+                            
                             <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
                                 <Label Grid.Column="0" Content="Detaljer" FontWeight="Bold" VerticalAlignment="Center" />
                             </StackPanel>
@@ -74,6 +74,7 @@
                                 <Label Grid.Column="0" Content="Type:" />
                                 <Label Grid.Column="0" Content="Stor" FontWeight="Bold"/>
                             </StackPanel>
+                            
                         </StackPanel>
 
                         <!-- LEJER COLUMN -->
@@ -148,12 +149,10 @@
                                     <Label Grid.Column="0" Content="Antal katte:" />
                                     <Label Grid.Column="0" Content="0" FontWeight="Bold"/>
                                 </StackPanel>
+                                
                             </StackPanel>
 
                         </StackPanel>
-
-
-
 
                     </Grid>
                 </Expander>
@@ -161,12 +160,5 @@
             </StackPanel>
         </ScrollViewer>
 
-
-<!--
-        <DockPanel Width="500" Background="red">
-            <Label Content="Label text" DockPanel.Dock="Left" />
-            <Button Content="Button text" DockPanel.Dock="Right" />
-        </DockPanel>
--->
     </Grid>
 </Window>

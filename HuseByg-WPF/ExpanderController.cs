@@ -17,6 +17,7 @@ namespace HuseByg_WPF
         static public void AddExpander(StackPanel element, Lejemål lejemål, Hus hus)
         {
             
+
             string code;
             if (lejemål == null)
             {

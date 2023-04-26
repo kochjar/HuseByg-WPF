@@ -48,10 +48,7 @@ namespace HuseByg_WPF
             Hus hus3 = new Hus("Nørrebrogade 25, 2200 København", HusType.Ende, 50, 4);
 
             
-
-
             ExpanderController.AddExpander(spList, lejemål1, hus1);
-
             ExpanderController.AddExpander(spList, lejemål2, hus2);
             ExpanderController.AddExpander(spList, null, hus3);
 
