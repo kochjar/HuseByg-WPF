@@ -158,10 +158,7 @@ namespace HuseByg_WPF
 
                             <!--- PERSONER -->
                             <StackPanel Orientation='Vertical'>
-                                <StackPanel VerticalAlignment='Top' Margin='0,10,0,0' Orientation='Horizontal'  >
-                                    <Label Grid.Column='0' Content='{lejemål.Lejere[0].navn}' FontWeight='Bold' VerticalAlignment='Center'/>
-                                    <Label Grid.Column='0' Content='(Primær)' VerticalAlignment='Center' />
-                                </StackPanel>
+                          
 
                                 <Border BorderBrush='#000' BorderThickness='1' Width='220' HorizontalAlignment='Left'></Border>
 

@@ -7,10 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
-        
+
         <ScrollViewer>
-            
+
             <StackPanel x:Name="spList" Orientation="Vertical">
+                
+                <DockPanel Width="612" HorizontalAlignment="Center" Height="40">
+                    <Button Width="100" Height="30" HorizontalAlignment="Right">Tilføj hus 🏠</Button>
+                </DockPanel>
+                
                 
                 <Expander Margin="0,0,0,10" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="612" Background="#eee" Padding="2" BorderBrush="#999" BorderThickness="1">
 
@@ -158,6 +163,7 @@
                 </Expander>
 
             </StackPanel>
+            
         </ScrollViewer>
 
     </Grid>
