@@ -6,27 +6,27 @@
         xmlns:local="clr-namespace:HuseByg_WPF"
         mc:Ignorable="d"
         
-        Title="Tilføj Hus" Height="400" Width="300">
+        Title="Tilføj Hus" Height="430" Width="300">
     <Grid>
         
         <StackPanel Orientation="Vertical" Width="200">
-            <TextBlock FontSize="24">Tilføj Hus</TextBlock>
+            <TextBlock x:Name="tbTitel"  FontSize="24">Tilføj Hus</TextBlock>
 
             <Border Margin="0,8,0,5" Width="200" BorderBrush="LightGray" BorderThickness="0.5"></Border>
             
             <Label Margin="-5,0,0,0" FontSize="12" FontWeight="Bold">Detaljer</Label>
             <Label Margin="-5,0,0,0">Adresse</Label>
-            <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="tbAdresse" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
             <Label Margin="-5,0,0,0">Antal værelser</Label>
-            <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="tbVærelser" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
             <Label Margin="-5,0,0,0">Størrelse i m²</Label>
-            <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="tbStørrelse" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
 
             <Label Margin="-5,10,5,5" FontSize="12" FontWeight="Bold">Type</Label>
             <StackPanel Orientation="Vertical">
-                <RadioButton Content="Lille" GroupName="Type"/>
-                <RadioButton Content="Stor" GroupName="Type"/>
-                <RadioButton Content="Ende" GroupName="Type"/>
+                <RadioButton x:Name="rbLille"  Content="Lille" GroupName="Type"/>
+                <RadioButton x:Name="rbStor" Content="Stor" GroupName="Type"/>
+                <RadioButton x:Name="rbEnde" Content="Ende" GroupName="Type"/>
             </StackPanel>
 
             <DockPanel Margin="0,15,0,0">

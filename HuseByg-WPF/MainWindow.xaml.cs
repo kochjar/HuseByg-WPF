@@ -54,15 +54,22 @@ namespace HuseByg_WPF
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NytHus(object sender, RoutedEventArgs e)
         {
-            /*
+            
             HusDialog dialog = new HusDialog();
-            dialog.ShowDialog();*/
-
-            LejemålDialog dialog = new LejemålDialog();
-
             dialog.ShowDialog();
+
+
         }
+        private void RedigerHus_Click(object sender, RoutedEventArgs e)
+        {
+            Hus hus1 = new Hus("Søndervangen 23, 8000 Aarhus", HusType.Stor, 67, 3);
+            //Hus hus1 = (Hus)((Button)sender).Tag;
+            HusDialog dialog = new HusDialog(hus1);
+            dialog.ShowDialog();
+
+        }
+        
     }
 }

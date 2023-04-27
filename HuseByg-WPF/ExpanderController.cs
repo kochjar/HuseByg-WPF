@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,7 +35,7 @@ namespace HuseByg_WPF
                             </Grid.ColumnDefinitions>
 
                             <DockPanel Grid.Column='0'>
-                                <Button Content='✏️' Margin='0,0,10,0' Width='25' Height='25'  Foreground='#000' DockPanel.Dock='Right' />
+                                <Button Content='✏️' Margin='0,0,10,0' Width='25' Height='25'  Foreground='#000' DockPanel.Dock='Right' Tag='{hus}'  />
                                 <StackPanel Orientation='Horizontal' DockPanel.Dock='Left'>
                                     <TextBlock Text='{hus.HusId}'  VerticalAlignment='Center' FontWeight='Bold' />
                                     <TextBlock Text='{hus.Adresse}' Margin='5,0,0,0' VerticalAlignment='Center' />
@@ -354,6 +355,7 @@ namespace HuseByg_WPF
                 </Expander>";
             }
 
+            
             var xaml = (UIElement)XamlReader.Parse(code);
             element.Children.Add(xaml);
         }

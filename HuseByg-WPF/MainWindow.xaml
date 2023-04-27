@@ -13,7 +13,7 @@
             <StackPanel x:Name="spList" Orientation="Vertical">
                 
                 <DockPanel Width="612" HorizontalAlignment="Center" Height="40">
-                    <Button Width="100" Height="30" HorizontalAlignment="Right" Click="Button_Click">Tilføj hus 🏠</Button>
+                    <Button Width="100" Height="30" HorizontalAlignment="Right" Click="NytHus">Tilføj hus 🏠</Button>
                 </DockPanel>
                 
                 
@@ -28,7 +28,7 @@
                             </Grid.ColumnDefinitions>
 
                             <DockPanel Grid.Column="0">
-                                <Button Content="✏️" Margin="0,0,10,0" Width="25" Height="25" Foreground="#000" DockPanel.Dock="Right" />
+                                <Button Content="✏️" Margin="0,0,10,0" Width="25" Height="25" Foreground="#000" DockPanel.Dock="Right" Click="RedigerHus_Click" />
                                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
                                     <TextBlock Text="H1"  VerticalAlignment="Center" FontWeight="Bold" />
                                     <TextBlock Text="Søndergade 20, 8000 Aarhus" Margin="5,0,0,0" VerticalAlignment="Center" />
