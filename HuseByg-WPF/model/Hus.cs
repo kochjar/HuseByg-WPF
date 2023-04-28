@@ -50,6 +50,9 @@ namespace HuseByg.model
             private set { _lejemål = value; }
         }
 
+        public bool LejemålFindes { get; set; }
+        public bool LejemålFindesIkke { get; set; }
+
         public Hus(string adresse, HusType type, int kvm, int antalVærelser)
         {
             count++;
@@ -58,11 +61,15 @@ namespace HuseByg.model
             this.Type = type;
             this.Kvm = kvm;
             this.AntalVærelser = antalVærelser;
+            this.LejemålFindes = false;
+            this.LejemålFindesIkke = true;
 
         }
         public void TilføjLejemål(Lejemål lejemål)
         {
             this.Lejemål = lejemål;
+            this.LejemålFindes = true;
+            this.LejemålFindesIkke = false;
         }
     }
 }

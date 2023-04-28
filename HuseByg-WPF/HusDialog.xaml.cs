@@ -57,9 +57,43 @@ namespace HuseByg_WPF
             }
         }
 
-        private void Fortryd(object sender, RoutedEventArgs e)
+        private void Fortryd_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+        public string Adresse { get { return tbAdresse.Text; } }
+        public int AntalVærelser { get { return int.Parse(tbVærelser.Text); } }
+
+        public int Størrelse { get { return int.Parse(tbStørrelse.Text); } }
+
+        public HusType Type
+        {
+            get
+            {
+                if (rbStor.IsChecked == true)
+                {
+                    return HusType.Stor;
+                } else if (rbLille.IsChecked == true)
+                {
+                    return HusType.Lille;
+                } else
+                {
+                    return HusType.Ende;
+                }
+            }
+        }
+
+        private void Gem_Click(object sender, RoutedEventArgs e)
+        {
+            // Errors
+            if (string.IsNullOrEmpty(tbAdresse.Text)) { MessageBox.Show("Du skal angive hvilken adresse huset har.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (string.IsNullOrEmpty(tbVærelser.Text)) { MessageBox.Show("Du skal angive hvor mange værelser huset har.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (string.IsNullOrEmpty(tbStørrelse.Text)) { MessageBox.Show("Du skal angive husets størrelse.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (!int.TryParse(tbVærelser.Text, out int _)) { MessageBox.Show("Du skal angive et tal i feltet for antal værelser.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (!int.TryParse(tbStørrelse.Text, out int _)) { MessageBox.Show("Du skal angive et tal i feltet for antal værelser.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (rbStor.IsChecked == false && rbLille.IsChecked == false && rbEnde.IsChecked == false) { MessageBox.Show("Du skal vælge en type til huset.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+
+            DialogResult = true;
         }
     }
 }

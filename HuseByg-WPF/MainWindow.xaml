@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HuseByg_WPF"
         mc:Ignorable="d"
+
+
         Title="MainWindow" Height="600" Width="1000">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid>
 
         <ScrollViewer>
@@ -13,155 +18,199 @@
             <StackPanel x:Name="spList" Orientation="Vertical">
                 
                 <DockPanel Width="612" HorizontalAlignment="Center" Height="40">
-                    <Button Width="100" Height="30" HorizontalAlignment="Right" Click="NytHus">Tilføj hus 🏠</Button>
+                    <Button Width="100" Height="30" HorizontalAlignment="Right" Click="NytHus_Click">Tilføj hus 🏠</Button>
                 </DockPanel>
                 
+                <ItemsControl ItemsSource="{Binding Huse}" Width="612">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Expander Margin="0,0,0,10" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="612" Background="#eee" Padding="2" BorderBrush="#999" BorderThickness="1">
+
+                                <Expander.Header >
+
+                                    <Grid Height="35"  Width="564">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <DockPanel Grid.Column="0">
+                                            <Button Content="✏️" Margin="0,0,10,0" Width="25" Height="25" Foreground="#000" DockPanel.Dock="Right" Click="RedigerHus_Click" />
+                                            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                                                <TextBlock Text="{Binding HusId}"  VerticalAlignment="Center" FontWeight="Bold" />
+                                                <TextBlock Text="{Binding Adresse}" Margin="5,0,0,0" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </DockPanel>
+
+                                        <DockPanel Grid.Column="1">
+                                            <Button Content="✏️" Margin="0,0,0,0" Width="25" Height="25" DockPanel.Dock="Right" Visibility="{Binding LejemålFindes, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}"/>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="1" DockPanel.Dock="Left">
+
+                                                <Label Padding="0"  VerticalAlignment="Center" Content="{Binding Lejemål.Lejere[0].navn}"></Label>
+                                                <Label VerticalAlignment="Center"  Content="(Primær)" FontWeight="Bold" Visibility="{Binding LejemålFindes, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}"></Label>
+                                                <Label VerticalAlignment="Center" Content="{Binding Lejemål.Lejere[1].navn}"></Label>
+                                                <Button Content='Tilføj lejere 🧑' Margin='-10,0,0,0' Height='25' Width='90' Visibility="{Binding LejemålFindesIkke,Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Visible}"/>
+                                            </StackPanel>
+                                        </DockPanel>
+
+                                    </Grid>
+
+                                </Expander.Header>
+                                <Expander.Content>
+                                <Grid Background="#fff" Width="610" Height="auto">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- HUS COLUMN -->
+                                    <StackPanel Orientation="Vertical"  Grid.Column="0" Margin="10,10,0,20" >
+                                        
+                                        <Border BorderBrush="#555" BorderThickness="0.5" Width="250" HorizontalAlignment="Left">
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  Background="#eeeeee" Width="250" HorizontalAlignment="Left">
+                                                <Label Content="Detaljer" FontWeight="Bold" VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </Border>
+
+                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
+                                            <Label Content="Antal værelser:" />
+                                            <Label Content="{Binding AntalVærelser}" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+
+                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
+                                            <Label Content="Størrelse:" />
+                                            <Label VerticalAlignment="center" Padding="0" Content="{Binding Kvm}" FontWeight="Bold"/>
+                                            <Label VerticalAlignment="center" Padding="0" Content=" m²" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+
+                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                            <Label Content="Type:" />
+                                            <Label Content="{Binding Type}" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        
+                                        <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+
+                                        <DockPanel HorizontalAlignment="Left" Margin="0,10,0,0">
+                                                <Button Width="100" Height="25" HorizontalAlignment="Right" Click="SletHus_Click" Background="#ffe4e3" Foreground="#6b0400" BorderBrush="#871b17">Slet hus 🏠</Button>
+                                        </DockPanel>
+
+
+                                        </StackPanel>
+
+                                    <!-- LEJER COLUMN -->
+
+
+                                        <StackPanel Orientation="Vertical"  Grid.Column="1" Margin="0,0,0,10" Visibility="{Binding LejemålFindes, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}">
+
+                                        <!--- PERSONER -->
+                                        <StackPanel Orientation="Vertical">
+                                            
+                                            <Border Margin="0,10,0,0" BorderBrush="#555" BorderThickness="0.5" Width="250" HorizontalAlignment="Left">
+                                                <StackPanel VerticalAlignment="Top"  Orientation="Horizontal" Background="#eee">
+                                                    <Label Content="{Binding Lejemål.Lejere[0].navn}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                    <Label Content="(Primær)" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </Border>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
+                                                <Label Content="Mail:" />
+                                                    <Label Content="{Binding Lejemål.Lejere[0].mail}" FontWeight="Bold" />
+                                            </StackPanel>
+                                            
+                                            <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                <Label Content="Tlf.:" />
+                                                <Label Content="{Binding Lejemål.Lejere[0].tlf_nr}" FontWeight="Bold"/>
+                                            </StackPanel>
+                                            
+                                             <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+                                            
+                                        </StackPanel>
+
+                                        
+                                        <!-- Sekundær person -->
+                                            <StackPanel Orientation="Vertical" Margin="0,10,0,0" Visibility="{Binding Lejemål.DerErToLejere, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}">
+                                                <Border Margin="0,10,0,0" BorderBrush="#555" BorderThickness="0.5" Width="250" HorizontalAlignment="Left" Background="#eee">
+                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
+                                                        <Label Content="{Binding Lejemål.Lejere[1].navn}" FontWeight="Bold" VerticalAlignment="Center" />
+                                                        <Label Content="" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </Border>
+
+                                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
+                                                <Label Content="Mail:" />
+                                                <Label Content="{Binding Lejemål.Lejere[1].mail}" FontWeight="Bold" />
+                                            </StackPanel>
+                                            
+                                            <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                <Label Content="Tlf.:" />
+                                                <Label Content="{Binding Lejemål.Lejere[1].tlf_nr}" FontWeight="Bold"/>
+                                            </StackPanel>
+
+                                            <Border BorderBrush="#999" BorderThickness="0.5" Width="250" HorizontalAlignment="Left"></Border>
+                                        </StackPanel>
+
+
+                                        <!-- LEJEMÅL -->
+                                        <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                                            <Border Margin="0,10,0,0" BorderBrush="#555" BorderThickness="0.5" Width="250" HorizontalAlignment="Left" Background="#eee">
+                                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
+                                                    <Label Content="Lejemål" FontWeight="Bold" VerticalAlignment="Center" />
+                                                    <Label Content="" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </Border>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
+                                                <Label Content="Indflytningsdato:" />
+                                                <Label Content="{Binding Lejemål.Indflytningsdato}" FontWeight="Bold" />
+                                            </StackPanel>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                <Label Content="Fraflytningsdato:" />
+                                                <Label Content="{Binding Lejemål.Fraflytningsdato}" FontWeight="Bold" />
+                                            </StackPanel>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                <Label Content="Indbetalt depositum:" />
+                                                <Label Padding="0" VerticalAlignment="Center" Content="{Binding Lejemål.IndbetaltDepositum}" FontWeight="Bold"/>
+                                                <Label Content="kr." FontWeight="Bold"/>
+                                                </StackPanel>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                <Label Content="Antal hunde:" />
+                                                <Label Content="{Binding Lejemål.AntalHunde}" FontWeight="Bold"/>
+                                            </StackPanel>
+
+                                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                <Label Content="Antal katte:" />
+                                                <Label Content="{Binding Lejemål.AntalKatte}" FontWeight="Bold"/>
+                                            </StackPanel>
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </Grid>
+                                </Expander.Content>
+                            </Expander>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
                 
-                <Expander Margin="0,0,0,10" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="612" Background="#eee" Padding="2" BorderBrush="#999" BorderThickness="1">
-
-                    <Expander.Header >
-
-                        <Grid Height="35"  Width="564">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <DockPanel Grid.Column="0">
-                                <Button Content="✏️" Margin="0,0,10,0" Width="25" Height="25" Foreground="#000" DockPanel.Dock="Right" Click="RedigerHus_Click" />
-                                <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                                    <TextBlock Text="H1"  VerticalAlignment="Center" FontWeight="Bold" />
-                                    <TextBlock Text="Søndergade 20, 8000 Aarhus" Margin="5,0,0,0" VerticalAlignment="Center" />
-                                </StackPanel>
-                            </DockPanel>
-
-                            <DockPanel Grid.Column="1">
-                                <Button Content="✏️" Margin="0,0,0,0" Width="25" Height="25" DockPanel.Dock="Right"/>
-                                <StackPanel Orientation="Horizontal" Grid.Column="1" DockPanel.Dock="Left">
-                                    <TextBlock Margin="0,0,10,0" VerticalAlignment="Center">
-                                        <TextBlock>
-                                            York Oxmall <Bold>(Primær)</Bold>, Anita P. Ness
-                                        </TextBlock>
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
-
-                        </Grid>
-
-                    </Expander.Header>
-                    <Grid Background="#fff" Width="610" Height="auto">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- HUS COLUMN -->
-                        <StackPanel Orientation="Vertical"  Grid.Column="0" Margin="10,10,0,0">
-                            
-                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
-                                <Label Grid.Column="0" Content="Detaljer" FontWeight="Bold" VerticalAlignment="Center" />
-                            </StackPanel>
-
-                            <Border BorderBrush="#000" BorderThickness="1" Width="220" HorizontalAlignment="Left"></Border>
-
-                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
-                                <Label Grid.Column="0" Content="Antal værelser:" />
-                                <Label Grid.Column="0" Content="3" FontWeight="Bold"/>
-                            </StackPanel>
-
-                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
-                                <Label Grid.Column="0" Content="Størrelse:" />
-                                <Label Grid.Column="0" Content="60 m²" FontWeight="Bold"/>
-                            </StackPanel>
-
-                            <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                <Label Grid.Column="0" Content="Type:" />
-                                <Label Grid.Column="0" Content="Stor" FontWeight="Bold"/>
-                            </StackPanel>
-                            
-                        </StackPanel>
-
-                        <!-- LEJER COLUMN -->
-
-
-                        <StackPanel Orientation="Vertical"  Grid.Column="1" Margin="0,0,0,10">
-
-                            <!--- PERSONER -->
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel VerticalAlignment="Top" Margin="0,10,0,0" Orientation="Horizontal"  >
-                                    <Label Grid.Column="0" Content="York Oxmall" FontWeight="Bold" VerticalAlignment="Center"/>
-                                    <Label Grid.Column="0" Content="(Primær)" VerticalAlignment="Center" />
-                                </StackPanel>
-
-                                <Border BorderBrush="#000" BorderThickness="1" Width="220" HorizontalAlignment="Left"></Border>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
-                                    <Label Grid.Column="0" Content="Mail:" />
-                                    <Label Grid.Column="0" Content="york.oxmall@gmail.com" FontWeight="Bold" />
-                                </StackPanel>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                    <Label Grid.Column="0" Content="Tlf.:" />
-                                    <Label Grid.Column="0" Content="+45 20304050" FontWeight="Bold"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  >
-                                    <Label Grid.Column="0" Content="Anita P. Ness" FontWeight="Bold" VerticalAlignment="Center" />
-                                    <Label Grid.Column="0" Content="" VerticalAlignment="Center" />
-                                </StackPanel>
-
-                                <Border BorderBrush="#000" BorderThickness="1" Width="220" HorizontalAlignment="Left"></Border>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
-                                    <Label Grid.Column="0" Content="Mail:" />
-                                    <Label Grid.Column="0" Content="anita.p.ness@gmail.com" FontWeight="Bold" />
-                                </StackPanel>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                    <Label Grid.Column="0" Content="Tlf.:" />
-                                    <Label Grid.Column="0" Content="+45 10306020" FontWeight="Bold"/>
-                                </StackPanel>
-                            </StackPanel>
-
-
-                            <!-- LEJEMÅL -->
-                            <StackPanel Orientation="Vertical" Margin="0,20,0,0">
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" >
-                                    <Label Grid.Column="0" Content="Indflytningsdato:" />
-                                    <Label Grid.Column="0" Content="01-02-2020" FontWeight="Bold" />
-                                </StackPanel>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                    <Label Grid.Column="0" Content="Udflytningsdato:" />
-                                    <Label Grid.Column="0" Content="01-09-2021" FontWeight="Bold" />
-                                </StackPanel>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                    <Label Grid.Column="0" Content="Indbetalt depositum:" />
-                                    <Label Grid.Column="0" Content="21000 kr." FontWeight="Bold"/>
-                                </StackPanel>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                    <Label Grid.Column="0" Content="Antal hunde:" />
-                                    <Label Grid.Column="0" Content="1" FontWeight="Bold"/>
-                                </StackPanel>
-
-                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                    <Label Grid.Column="0" Content="Antal katte:" />
-                                    <Label Grid.Column="0" Content="0" FontWeight="Bold"/>
-                                </StackPanel>
-                                
-                            </StackPanel>
-
-                        </StackPanel>
-
-                    </Grid>
-                </Expander>
-
             </StackPanel>
             
         </ScrollViewer>

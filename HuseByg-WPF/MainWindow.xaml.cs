@@ -1,6 +1,8 @@
 ﻿using HuseByg.model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.Xaml.Permissions;
+using System.Xml.Linq;
 
 namespace HuseByg_WPF
 {
@@ -24,10 +27,13 @@ namespace HuseByg_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Hus> Huse { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-
+            
+            
+            
             Hus hus1 = new Hus("Søndervangen 23, 8000 Aarhus", HusType.Stor, 67, 3);
             List<Lejer> lejere1 = new List<Lejer>()
             {
@@ -43,26 +49,35 @@ namespace HuseByg_WPF
             };
             Lejemål lejemål2 = new Lejemål(new DateTime(2022, 6, 1), new DateTime(2024, 6, 1), 12000, lejere2, 2, 1);
 
-
-
             Hus hus3 = new Hus("Nørrebrogade 25, 2200 København", HusType.Ende, 50, 4);
 
-            
-            ExpanderController.AddExpander(spList, lejemål1, hus1);
-            ExpanderController.AddExpander(spList, lejemål2, hus2);
-            ExpanderController.AddExpander(spList, null, hus3);
+            hus1.TilføjLejemål(lejemål1);
+            hus2.TilføjLejemål(lejemål2);
 
+            DataContext = this;
+
+            Huse = new ObservableCollection<Hus>()
+            {
+                hus1, hus2, hus3
+            };
+
+            
         }
 
-        private void NytHus(object sender, RoutedEventArgs e)
+        private void NytHus_Click(object sender, RoutedEventArgs e)
         {
             
             HusDialog dialog = new HusDialog();
-            dialog.ShowDialog();
+            bool? result = dialog.ShowDialog();
+            if (result == true)
+            {
+                Debug.WriteLine($"{dialog.Adresse}, {dialog.Type}, {dialog.Størrelse}");
+                Huse.Add(new Hus(dialog.Adresse, dialog.Type, dialog.Størrelse, dialog.AntalVærelser));
+            }
 
 
         }
-        private void RedigerHus_Click(object sender, RoutedEventArgs e)
+        public void RedigerHus_Click(object sender, RoutedEventArgs e)
         {
             Hus hus1 = new Hus("Søndervangen 23, 8000 Aarhus", HusType.Stor, 67, 3);
             //Hus hus1 = (Hus)((Button)sender).Tag;
@@ -70,6 +85,13 @@ namespace HuseByg_WPF
             dialog.ShowDialog();
 
         }
-        
+
+        public void SletHus_Click(object sender, RoutedEventArgs e)
+        {
+            var hus = ((FrameworkElement)sender).DataContext as Hus;
+            Huse.Remove(hus);
+        }
+
+
     }
 }

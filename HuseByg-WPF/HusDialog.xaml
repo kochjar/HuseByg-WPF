@@ -30,8 +30,8 @@
             </StackPanel>
 
             <DockPanel Margin="0,15,0,0">
-                <Button  Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd">Fortryd</Button>
-                <Button Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
+                <Button  Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd_Click">Fortryd</Button>
+                <Button Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Click="Gem_Click" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
             </DockPanel>
             
 

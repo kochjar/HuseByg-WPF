@@ -23,7 +23,7 @@ namespace HuseByg_WPF
             if (lejemål == null)
             {
                 code = $@"
-
+                
                 <Expander xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' Margin='0,0,0,10' HorizontalAlignment='Center' Height='auto' VerticalAlignment='Center' Width='612' Background='#eee' Padding='2' BorderBrush='#999' BorderThickness='1'>
 
                     <Expander.Header >

@@ -58,6 +58,8 @@ namespace HuseByg.model
             private set { _antalKatte = value; }
         }
 
+        public bool DerErToLejere { get; set; }
+
         public Lejemål(DateTime indflytningsdato, DateTime fraflytningsdato, double indbetaltDepositum, List<Lejer> lejere, int antalHunde, int antalKatte)
         {
             count++;
@@ -68,6 +70,12 @@ namespace HuseByg.model
             Lejere = lejere;
             AntalHunde = antalHunde;
             AntalKatte = antalKatte;
+            if (lejere.Count == 2) {
+                this.DerErToLejere = true;
+            } else
+            {
+                this.DerErToLejere = false;
+            }
         }
 
         public Lejer HentPrimærLejer()
