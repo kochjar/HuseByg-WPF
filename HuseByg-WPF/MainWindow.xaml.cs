@@ -165,7 +165,14 @@ namespace HuseByg_WPF
 
         public void SletLejemål_Click(object sender, RoutedEventArgs e)
         {
-
+            Hus hus = ((FrameworkElement)sender).DataContext as Hus;
+            int index = Huse.IndexOf(hus);
+            Huse[index].Lejemål = null;
+            Huse[index].LejemålFindes = false;
+            Huse[index].LejemålFindesIkke = true;
+            Huse[index].OnPropertyChanged("Lejemål");
+            Huse[index].OnPropertyChanged("LejemålFindes");
+            Huse[index].OnPropertyChanged("LejemålFindesIkke");
         }
 
         
