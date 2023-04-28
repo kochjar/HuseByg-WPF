@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HuseByg_WPF"
         mc:Ignorable="d"
-        Title="Tilføj lejere" Height="700" Width="560">
+        Title="Huse-Byg" Height="700" Width="560">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://e0.pxfuel.com/wallpapers/855/67/desktop-wallpaper-real-estate-agent-background-travel-agent-agent-venom-and-agent-wash-thumbnail.jpg"/>
+        </Grid.Background>
         
         <StackPanel Orientation="Vertical" Width="410" Margin="0 10 0 0">
             <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Left">
@@ -14,8 +17,8 @@
                 <Border Margin="0,8,0,5" Width="200" BorderBrush="LightGray" BorderThickness="0.5"></Border>
                  <Label FontSize="12" FontWeight="Bold" Margin="-5,0,5,5">Antal lejere</Label>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton x:Name="rbEnLejer" Content="1 lejer" GroupName="AntalLejere" Checked="RadioButton_Checked"/>
-                    <RadioButton x:Name="rbToLejere" Content="2 lejere" GroupName="AntalLejere" Margin="10,0,0,0"  Checked="RadioButton_Checked"/>
+                    <RadioButton x:Name="rbEnLejer" Content="1 lejer" GroupName="AntalLejere" Checked="RadioButton_Checked" BorderThickness="2"/>
+                    <RadioButton x:Name="rbToLejere" Content="2 lejere" GroupName="AntalLejere" Margin="10,0,0,0"  Checked="RadioButton_Checked" BorderThickness="2"/>
                 </StackPanel>
                 
             </StackPanel>
@@ -23,20 +26,20 @@
                 <StackPanel Orientation="Vertical" Width="200">
                     <TextBlock FontSize="12" FontWeight="Bold">🧑 Primær lejer</TextBlock>
                     <Label Margin="-5,0,0,0">Navn</Label>
-                    <TextBox x:Name="tbPrimærLejerNavn" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbPrimærLejerNavn" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                     <Label Margin="-5,0,0,0">E-mailadresse</Label>
-                    <TextBox x:Name="tbPrimærLejerMail" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbPrimærLejerMail" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                     <Label Margin="-5,0,0,0">Tlf. nr.</Label>
-                    <TextBox x:Name="tbPrimærLejerTlfNr" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbPrimærLejerTlfNr" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Width="200" Margin="10,0,0,0">
                     <TextBlock x:Name="SekundærLejerTitel" FontSize="12" FontWeight="Bold" Foreground="gray">🧑 Sekundær lejer</TextBlock>
                     <Label Margin="-5,0,0,0">Navn</Label>
-                    <TextBox x:Name="tbSekundærLejerNavn"  IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbSekundærLejerNavn"  IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                     <Label Margin="-5,0,0,0">E-mailadresse</Label>
-                    <TextBox x:Name="tbSekundærLejerMail" IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbSekundærLejerMail" IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                     <Label Margin="-5,0,0,0">Tlf. nr.</Label>
-                    <TextBox x:Name="tbSekundærLejerTlfNr" IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbSekundærLejerTlfNr" IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                 </StackPanel>
 
             </StackPanel>
@@ -45,31 +48,31 @@
             <StackPanel Orientation="Vertical" Width="410" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <TextBlock FontSize="12" FontWeight="Bold">Lejemålsoplysninger</TextBlock>
                 <Label Margin="-5,0,0,0">Indbetalt depositum</Label>
-                <TextBox x:Name="tbIndbetaltDepositum" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="tbIndbetaltDepositum" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                 <Label Margin="-5,0,0,0">Indflytningsdato i (DD-MM-YYYY)</Label>
-                <TextBox x:Name="tbIndflytningsdato" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="tbIndflytningsdato" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                 <Label Margin="-5,0,0,0">Fraflytningsdato i (DD-MM-YYYY)</Label>
-                <TextBox x:Name="tbFraflytningsdato" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="tbFraflytningsdato" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
 
                 <TextBlock Margin="0 10 0 0" FontSize="12" FontWeight="Bold">Kæledyr</TextBlock>
                 <StackPanel Orientation="Horizontal" Width="410" >
 
                     <StackPanel Orientation="Vertical" Width="200">
                         <Label Margin="-5,0,0,0">Antal hunde</Label>
-                        <TextBox x:Name="tbAntalHunde" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="tbAntalHunde" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0" Width="200">
                         <Label Margin="-6,0,0,0">Antal katte</Label>
-                        <TextBox  x:Name="tbAntalKatte" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox  x:Name="tbAntalKatte" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
                     </StackPanel>
                 </StackPanel>
 
                 </StackPanel>
 
             <DockPanel Margin="0,15,0,0" Width="200" HorizontalAlignment="Left">
-                <Button  Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd_Click">Fortryd</Button>
-                <Button Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Click="Gem_Click" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
+                <Button  Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd_Click" BorderThickness="2">Fortryd</Button>
+                <Button Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Click="Gem_Click" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="2">Gem</Button>
             </DockPanel>
 
 

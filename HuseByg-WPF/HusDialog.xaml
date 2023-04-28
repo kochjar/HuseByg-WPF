@@ -6,32 +6,34 @@
         xmlns:local="clr-namespace:HuseByg_WPF"
         mc:Ignorable="d"
         
-        Title="Tilføj Hus" Height="430" Width="300">
+        Title="Huse-Byg" Height="450" Width="300">
     <Grid>
-        
-        <StackPanel Orientation="Vertical" Width="200">
+        <Grid.Background>
+            <ImageBrush ImageSource="https://e0.pxfuel.com/wallpapers/855/67/desktop-wallpaper-real-estate-agent-background-travel-agent-agent-venom-and-agent-wash-thumbnail.jpg"/>
+        </Grid.Background>
+        <StackPanel Orientation="Vertical" Width="200" Margin="0,10,0,0">
             <TextBlock x:Name="tbTitel"  FontSize="24">Tilføj Hus</TextBlock>
 
             <Border Margin="0,8,0,5" Width="200" BorderBrush="LightGray" BorderThickness="0.5"></Border>
             
             <Label Margin="-5,0,0,0" FontSize="12" FontWeight="Bold">Detaljer</Label>
             <Label Margin="-5,0,0,0">Adresse</Label>
-            <TextBox x:Name="tbAdresse" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="tbAdresse" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
             <Label Margin="-5,0,0,0">Antal værelser</Label>
-            <TextBox x:Name="tbVærelser" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="tbVærelser" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
             <Label Margin="-5,0,0,0">Størrelse i m²</Label>
-            <TextBox x:Name="tbStørrelse" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+            <TextBox x:Name="tbStørrelse" Text="" Height="30" VerticalContentAlignment="Center" BorderThickness="2"></TextBox>
 
             <Label Margin="-5,10,5,5" FontSize="12" FontWeight="Bold">Type</Label>
             <StackPanel Orientation="Vertical">
-                <RadioButton x:Name="rbLille"  Content="Lille" GroupName="Type"/>
-                <RadioButton x:Name="rbStor" Content="Stor" GroupName="Type"/>
-                <RadioButton x:Name="rbEnde" Content="Ende" GroupName="Type"/>
+                <RadioButton x:Name="rbLille"  Content="Lille" GroupName="Type" BorderThickness="2"/>
+                <RadioButton x:Name="rbStor" Content="Stor" GroupName="Type" BorderThickness="2"/>
+                <RadioButton x:Name="rbEnde" Content="Ende" GroupName="Type" BorderThickness="2"/>
             </StackPanel>
 
             <DockPanel Margin="0,15,0,0">
-                <Button  Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd_Click">Fortryd</Button>
-                <Button Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Click="Gem_Click" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
+                <Button  Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" BorderThickness="2" Click="Fortryd_Click">Fortryd</Button>
+                <Button Width="98" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Click="Gem_Click" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="2">Gem</Button>
             </DockPanel>
             
 
