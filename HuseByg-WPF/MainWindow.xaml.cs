@@ -32,9 +32,10 @@ namespace HuseByg_WPF
         public MainWindow()
         {
             InitializeComponent();
-            
-            
-            
+            this.Icon = new BitmapImage(new Uri("Favicon.ico", UriKind.Relative));
+
+
+
             Hus hus1 = new Hus("Søndervangen 23, 8000 Aarhus", HusType.Stor, 67, 3);
             List<Lejer> lejere1 = new List<Lejer>()
             {
