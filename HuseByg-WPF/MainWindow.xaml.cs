@@ -71,7 +71,7 @@ namespace HuseByg_WPF
             bool? result = dialog.ShowDialog();
             if (result == true)
             {
-                Debug.WriteLine($"{dialog.Adresse}, {dialog.Type}, {dialog.Størrelse}");
+                
                 Huse.Add(new Hus(dialog.Adresse, dialog.Type, dialog.Størrelse, dialog.AntalVærelser));
             }
 
@@ -79,16 +79,30 @@ namespace HuseByg_WPF
         }
         public void RedigerHus_Click(object sender, RoutedEventArgs e)
         {
-            Hus hus1 = new Hus("Søndervangen 23, 8000 Aarhus", HusType.Stor, 67, 3);
+
+            var hus = ((FrameworkElement)sender).DataContext as Hus;
+                                                                    
             //Hus hus1 = (Hus)((Button)sender).Tag;
-            HusDialog dialog = new HusDialog(hus1);
-            dialog.ShowDialog();
+            HusDialog dialog = new HusDialog(hus);
+            bool? result = dialog.ShowDialog();
+            if (result == true)
+            {
+                int index = Huse.IndexOf(hus);
+                Huse[index].Adresse = dialog.Adresse;
+                Huse[index].Kvm = dialog.Størrelse;
+                Huse[index].AntalVærelser = dialog.AntalVærelser; 
+                Huse[index].Type = dialog.Type;
+                Huse[index].OnPropertyChanged("Adresse");
+                Huse[index].OnPropertyChanged("Type");
+                Huse[index].OnPropertyChanged("Kvm");
+                Huse[index].OnPropertyChanged("AntalVærelser");
+            }
 
         }
 
         public void SletHus_Click(object sender, RoutedEventArgs e)
         {
-            var hus = ((FrameworkElement)sender).DataContext as Hus;
+            Hus hus = ((FrameworkElement)sender).DataContext as Hus;
             Huse.Remove(hus);
         }
 

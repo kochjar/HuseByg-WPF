@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HuseByg.model
 {
-    public class Hus
+    public class Hus : INotifyPropertyChanged
     {
         private string _husId;
         private string _adresse;
@@ -16,38 +17,45 @@ namespace HuseByg.model
         private Lejemål _lejemål;
         private static int count = 0;
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public string HusId
         {
             get { return _husId; }
-            private set { _husId = value; }
+            set { _husId = value; }
         }
         public string Adresse
         {
             get { return _adresse; }
-            private set { _adresse = value; }
+            set { _adresse = value; }
         }
 
         public HusType Type
         {
             get { return _type; }
-            private set { _type = value; }
+            set { _type = value; }
         }
 
         public int Kvm
         {
             get { return _kvm; }
-            private set { _kvm = value; }
+            set { _kvm = value; }
         }
         public int AntalVærelser
         {
             get { return _antalVærelser; }
-            private set { _antalVærelser = value; }
+            set { _antalVærelser = value; }
         }
 
         public Lejemål Lejemål
         {
             get { return _lejemål; }
-            private set { _lejemål = value; }
+            set { _lejemål = value; }
         }
 
         public bool LejemålFindes { get; set; }

@@ -65,7 +65,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <!-- HUS COLUMN -->
-                                    <StackPanel Orientation="Vertical"  Grid.Column="0" Margin="10,10,0,20" >
+                                    <StackPanel Orientation="Vertical"  Grid.Column="0" Margin="10,10,0,10" >
                                         
                                         <Border BorderBrush="#555" BorderThickness="0.5" Width="250" HorizontalAlignment="Left">
                                             <StackPanel VerticalAlignment="Top" Orientation="Horizontal"  Background="#eeeeee" Width="250" HorizontalAlignment="Left">
