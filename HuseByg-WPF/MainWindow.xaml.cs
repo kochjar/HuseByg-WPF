@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -132,17 +133,30 @@ namespace HuseByg_WPF
         public void RedigerLejemål_Click(object sender, RoutedEventArgs e)
         {
             var hus = ((FrameworkElement)sender).DataContext as Hus;
+            bool ToLejereFør = hus.Lejemål.DerErToLejere;
             LejemålDialog dialog = new LejemålDialog(hus.Lejemål);
             bool? result = dialog.ShowDialog();
             if(result == true)
             {
                 int index = Huse.IndexOf(hus);
                 
-                if (dialog.ToLejere == true)
+                if (dialog.ToLejere == true && ToLejereFør == true)
                 {
                     Huse[index].Lejemål.Lejere[1].navn = dialog.SekundærLejerNavn;
                     Huse[index].Lejemål.Lejere[1].mail = dialog.SekundærLejerMail;
                     Huse[index].Lejemål.Lejere[1].tlf_nr = dialog.SekundærLejerTlfNr;
+                } else if (dialog.ToLejere == true && ToLejereFør == false)
+                {
+                    Huse[index].Lejemål.Lejere.Add(new Lejer(
+                        dialog.SekundærLejerNavn,
+                        dialog.SekundærLejerMail,
+                        dialog.SekundærLejerTlfNr
+                    ));
+                    Huse[index].Lejemål.DerErToLejere = true;
+                } else if (dialog.ToLejere == false && ToLejereFør == true)
+                {
+                    Huse[index].Lejemål.Lejere.Remove(Huse[index].Lejemål.Lejere[1]);
+                    Huse[index].Lejemål.DerErToLejere = false;
                 }
                 Huse[index].Lejemål.Lejere[0].navn = dialog.PrimærLejerNavn;
                 Huse[index].Lejemål.Lejere[0].mail = dialog.PrimærLejerMail;
@@ -154,6 +168,7 @@ namespace HuseByg_WPF
                 Huse[index].Lejemål.AntalHunde = dialog.AntalHunde;
                 Huse[index].Lejemål.AntalKatte = dialog.AntalKatte;
                 Huse[index].OnPropertyChanged("Lejemål");
+                Huse[index].OnPropertyChanged("DerErToLejere");
             }
         }
 
