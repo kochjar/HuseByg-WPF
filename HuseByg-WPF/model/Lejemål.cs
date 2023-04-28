@@ -21,41 +21,41 @@ namespace HuseByg.model
         public string LejemålId
         {
             get { return _lejemålId; }
-            private set { _lejemålId = value; }
+            set { _lejemålId = value; }
         }
         public DateTime Indflytningsdato
         {
             get { return _indflytningsdato; }
-            private set { _indflytningsdato = value; }
+            set { _indflytningsdato = value; }
         }
         public DateTime Fraflytningsdato
         {
             get { return _fraflytningsdato; }
-            private set { _fraflytningsdato = value; }
+            set { _fraflytningsdato = value; }
         }
 
         public double IndbetaltDepositum
         {
             get { return _indbetaltDepositum; }
-            private set { _indbetaltDepositum = value; }
+            set { _indbetaltDepositum = value; }
         }
 
         public List<Lejer> Lejere
         {
             get { return _lejere; }
-            private set { _lejere = value; }
+            set { _lejere = value; }
         }
 
         public int AntalHunde
         {
             get { return _antalHunde; }
-            private set { _antalHunde = value; }
+            set { _antalHunde = value; }
         }
 
         public int AntalKatte
         {
             get { return _antalKatte; }
-            private set { _antalKatte = value; }
+            set { _antalKatte = value; }
         }
 
         public bool DerErToLejere { get; set; }

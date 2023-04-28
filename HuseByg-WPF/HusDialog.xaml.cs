@@ -86,12 +86,12 @@ namespace HuseByg_WPF
         private void Gem_Click(object sender, RoutedEventArgs e)
         {
             // Errors
-            if (string.IsNullOrEmpty(tbAdresse.Text)) { MessageBox.Show("Du skal angive hvilken adresse huset har.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
-            if (string.IsNullOrEmpty(tbVærelser.Text)) { MessageBox.Show("Du skal angive hvor mange værelser huset har.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (string.IsNullOrEmpty(tbAdresse.Text)) { MessageBox.Show("Du skal angive hvilken adresse huset har.", "Hov, der skete en fejl!", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (string.IsNullOrEmpty(tbVærelser.Text)) { MessageBox.Show("Du skal angive hvor mange værelser huset har.", "Hov, der skete en fejl!", MessageBoxButton.OK, MessageBoxImage.Error); return; }
             if (string.IsNullOrEmpty(tbStørrelse.Text)) { MessageBox.Show("Du skal angive husets størrelse.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
-            if (!int.TryParse(tbVærelser.Text, out int _)) { MessageBox.Show("Du skal angive et tal i feltet for antal værelser.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
-            if (!int.TryParse(tbStørrelse.Text, out int _)) { MessageBox.Show("Du skal angive et tal i feltet for antal værelser.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
-            if (rbStor.IsChecked == false && rbLille.IsChecked == false && rbEnde.IsChecked == false) { MessageBox.Show("Du skal vælge en type til huset.", "Error", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (!int.TryParse(tbVærelser.Text, out int _)) { MessageBox.Show("Du skal angive et tal i feltet for antal værelser.", "Hov, der skete en fejl!", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (!int.TryParse(tbStørrelse.Text, out int _)) { MessageBox.Show("Du skal angive et tal i feltet for antal værelser.", "Hov, der skete en fejl!", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+            if (rbStor.IsChecked == false && rbLille.IsChecked == false && rbEnde.IsChecked == false) { MessageBox.Show("Du skal vælge en type til huset.", "Hov, der skete en fejl!", MessageBoxButton.OK, MessageBoxImage.Error); return; }
 
             DialogResult = true;
         }

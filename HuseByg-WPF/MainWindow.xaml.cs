@@ -74,9 +74,38 @@ namespace HuseByg_WPF
                 
                 Huse.Add(new Hus(dialog.Adresse, dialog.Type, dialog.Størrelse, dialog.AntalVærelser));
             }
-
-
         }
+        public void TilføjLejemål_Click(object sender, RoutedEventArgs e)
+        {
+            var hus = ((FrameworkElement)sender).DataContext as Hus;
+
+            LejemålDialog dialog = new LejemålDialog();
+            bool? result = dialog.ShowDialog();
+            if (result == true)
+            {
+                List<Lejer> lejere = new List<Lejer>
+                { new Lejer(dialog.PrimærLejerNavn, dialog.PrimærLejerMail, dialog.PrimærLejerTlfNr) };
+
+                if (dialog.ToLejere == true)
+                { lejere.Add(new Lejer(dialog.SekundærLejerNavn, dialog.SekundærLejerMail, dialog.SekundærLejerTlfNr)); }
+
+                Lejemål lejemål = new Lejemål(
+                    dialog.Indflytningsdato,
+                    dialog.Fraflytningsdato,
+                    dialog.IndbetaltDepositum,
+                    lejere,
+                    dialog.AntalHunde,
+                    dialog.AntalKatte
+                );
+
+                int index = Huse.IndexOf(hus);
+                Huse[index].TilføjLejemål(lejemål);
+                Huse[index].OnPropertyChanged("Lejemål");
+                Huse[index].OnPropertyChanged("LejemålFindes");
+                Huse[index].OnPropertyChanged("LejemålFindesIkke");
+            }
+        }
+
         public void RedigerHus_Click(object sender, RoutedEventArgs e)
         {
 
@@ -100,11 +129,46 @@ namespace HuseByg_WPF
 
         }
 
+        public void RedigerLejemål_Click(object sender, RoutedEventArgs e)
+        {
+            var hus = ((FrameworkElement)sender).DataContext as Hus;
+            LejemålDialog dialog = new LejemålDialog(hus.Lejemål);
+            bool? result = dialog.ShowDialog();
+            if(result == true)
+            {
+                int index = Huse.IndexOf(hus);
+                
+                if (dialog.ToLejere == true)
+                {
+                    Huse[index].Lejemål.Lejere[1].navn = dialog.SekundærLejerNavn;
+                    Huse[index].Lejemål.Lejere[1].mail = dialog.SekundærLejerMail;
+                    Huse[index].Lejemål.Lejere[1].tlf_nr = dialog.SekundærLejerTlfNr;
+                }
+                Huse[index].Lejemål.Lejere[0].navn = dialog.PrimærLejerNavn;
+                Huse[index].Lejemål.Lejere[0].mail = dialog.PrimærLejerMail;
+                Huse[index].Lejemål.Lejere[0].tlf_nr = dialog.PrimærLejerTlfNr;
+
+                Huse[index].Lejemål.IndbetaltDepositum = dialog.IndbetaltDepositum;
+                Huse[index].Lejemål.Indflytningsdato = dialog.Indflytningsdato;
+                Huse[index].Lejemål.Fraflytningsdato = dialog.Fraflytningsdato;
+                Huse[index].Lejemål.AntalHunde = dialog.AntalHunde;
+                Huse[index].Lejemål.AntalKatte = dialog.AntalKatte;
+                Huse[index].OnPropertyChanged("Lejemål");
+            }
+        }
+
         public void SletHus_Click(object sender, RoutedEventArgs e)
         {
             Hus hus = ((FrameworkElement)sender).DataContext as Hus;
             Huse.Remove(hus);
         }
+
+        public void SletLejemål_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
 
 
     }

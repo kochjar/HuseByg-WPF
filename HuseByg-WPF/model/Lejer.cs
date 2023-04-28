@@ -18,24 +18,24 @@ namespace HuseByg.model
         public string LejerId
         {
             get { return _lejerId; }
-            private set { _lejerId = value; }
+            set { _lejerId = value; }
         }
 
         public string navn
         {
             get { return _navn; }
-            private set { _navn = value; }
+            set { _navn = value; }
         }
         public string tlf_nr
         {
             get { return _tlf_nr; }
-            private set { _tlf_nr = value; }
+            set { _tlf_nr = value; }
         }
 
         public string mail
         {
             get { return _mail; }
-            private set { _mail = value; }
+            set { _mail = value; }
         }
 
 

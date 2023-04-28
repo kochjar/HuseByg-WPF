@@ -5,69 +5,71 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HuseByg_WPF"
         mc:Ignorable="d"
-        Title="Tilføj lejere" Height="650" Width="560">
+        Title="Tilføj lejere" Height="700" Width="560">
     <Grid>
         
-        <StackPanel Orientation="Vertical" Width="410">
+        <StackPanel Orientation="Vertical" Width="410" Margin="0 10 0 0">
             <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Left">
-                <TextBlock FontSize="24">Tilføj Lejemål</TextBlock>
+                <TextBlock x:Name="tbTitel" FontSize="24">Tilføj Lejemål</TextBlock>
                 <Border Margin="0,8,0,5" Width="200" BorderBrush="LightGray" BorderThickness="0.5"></Border>
                  <Label FontSize="12" FontWeight="Bold" Margin="-5,0,5,5">Antal lejere</Label>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Content="1 lejer" GroupName="AntalLejere"/>
-                    <RadioButton Content="2 lejere" GroupName="AntalLejere" Margin="10,0,0,0"/>
+                    <RadioButton x:Name="rbEnLejer" Content="1 lejer" GroupName="AntalLejere" Checked="RadioButton_Checked"/>
+                    <RadioButton x:Name="rbToLejere" Content="2 lejere" GroupName="AntalLejere" Margin="10,0,0,0"  Checked="RadioButton_Checked"/>
                 </StackPanel>
                 
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
                 <StackPanel Orientation="Vertical" Width="200">
-                    <TextBlock FontSize="12" FontWeight="Bold">Primær lejer</TextBlock>
+                    <TextBlock FontSize="12" FontWeight="Bold">🧑 Primær lejer</TextBlock>
                     <Label Margin="-5,0,0,0">Navn</Label>
-                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbPrimærLejerNavn" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                     <Label Margin="-5,0,0,0">E-mailadresse</Label>
-                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbPrimærLejerMail" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                     <Label Margin="-5,0,0,0">Tlf. nr.</Label>
-                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbPrimærLejerTlfNr" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Width="200" Margin="10,0,0,0">
-                    <TextBlock FontSize="12" FontWeight="Bold">Sekundær lejer</TextBlock>
+                    <TextBlock x:Name="SekundærLejerTitel" FontSize="12" FontWeight="Bold" Foreground="gray">🧑 Sekundær lejer</TextBlock>
                     <Label Margin="-5,0,0,0">Navn</Label>
-                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbSekundærLejerNavn"  IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                     <Label Margin="-5,0,0,0">E-mailadresse</Label>
-                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbSekundærLejerMail" IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                     <Label Margin="-5,0,0,0">Tlf. nr.</Label>
-                    <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tbSekundærLejerTlfNr" IsEnabled="False" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                 </StackPanel>
 
             </StackPanel>
             
 
             <StackPanel Orientation="Vertical" Width="410" HorizontalAlignment="Left" Margin="0,10,0,0">
-                    <TextBlock FontSize="12" FontWeight="Bold">Lejemålsoplysninger</TextBlock>
+                <TextBlock FontSize="12" FontWeight="Bold">Lejemålsoplysninger</TextBlock>
                 <Label Margin="-5,0,0,0">Indbetalt depositum</Label>
-                <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="tbIndbetaltDepositum" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                 <Label Margin="-5,0,0,0">Indflytningsdato i (DD-MM-YYYY)</Label>
-                <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="tbIndflytningsdato" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                 <Label Margin="-5,0,0,0">Fraflytningsdato i (DD-MM-YYYY)</Label>
-                <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="tbFraflytningsdato" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
 
+                <TextBlock Margin="0 10 0 0" FontSize="12" FontWeight="Bold">Kæledyr</TextBlock>
                 <StackPanel Orientation="Horizontal" Width="410" >
+
                     <StackPanel Orientation="Vertical" Width="200">
                         <Label Margin="-5,0,0,0">Antal hunde</Label>
-                        <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="tbAntalHunde" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0" Width="200">
                         <Label Margin="-6,0,0,0">Antal katte</Label>
-                        <TextBox Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox  x:Name="tbAntalKatte" Text="" Height="30" VerticalContentAlignment="Center"></TextBox>
                     </StackPanel>
                 </StackPanel>
 
                 </StackPanel>
 
             <DockPanel Margin="0,15,0,0" Width="200" HorizontalAlignment="Left">
-                <Button  Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd">Fortryd</Button>
-                <Button Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
+                <Button  Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Right" Click="Fortryd_Click">Fortryd</Button>
+                <Button Width="97" HorizontalAlignment="Left" Height="30" DockPanel.Dock="Left" Click="Gem_Click" Background="#00913d" Foreground="#fff" BorderBrush="#00451d" BorderThickness="1">Gem</Button>
             </DockPanel>
 
 
