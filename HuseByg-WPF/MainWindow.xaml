@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HuseByg_WPF"
         mc:Ignorable="d"
+        Closing="Window_Closing"
 
         FontFamily="Helvetica"
         Title="Huse-Byg" Height="600" Width="900">

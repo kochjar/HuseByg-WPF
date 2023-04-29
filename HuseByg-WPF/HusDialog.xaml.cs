@@ -24,12 +24,14 @@ namespace HuseByg_WPF
         public HusDialog()
         {
             InitializeComponent();
+            this.Icon = new BitmapImage(new Uri("Favicon.ico", UriKind.Relative));
         }
 
         public HusDialog(Hus hus)
         {
-            InitializeComponent(); // DET HER OPRETTER ALLE XAML KOMPONENTERNE
-             
+            InitializeComponent(); 
+            this.Icon = new BitmapImage(new Uri("Favicon.ico", UriKind.Relative));
+
             this.hus = hus;
 
             tbTitel.Text = $"Rediger: {hus.HusId}";

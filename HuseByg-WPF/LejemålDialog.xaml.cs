@@ -25,6 +25,7 @@ namespace HuseByg_WPF
         {
             InitializeComponent();
             rbEnLejer.IsChecked = true;
+            this.Icon = new BitmapImage(new Uri("Favicon.ico", UriKind.Relative));
         }
         
         public LejemålDialog(Lejemål lejemål)
@@ -32,7 +33,8 @@ namespace HuseByg_WPF
             InitializeComponent();
 
             tbTitel.Text = "Rediger Lejemål";
-            
+            this.Icon = new BitmapImage(new Uri("Favicon.ico", UriKind.Relative));
+
             switch (lejemål.Lejere.Count)
             {
                 case 1:

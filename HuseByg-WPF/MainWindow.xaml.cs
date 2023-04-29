@@ -191,7 +191,11 @@ namespace HuseByg_WPF
             Huse[index].OnPropertyChanged("LejemålFindesIkke");
         }
 
-        
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Debug.WriteLine("Hiiii");
+            Persistens.Save(Huse);
+        }
 
 
     }
